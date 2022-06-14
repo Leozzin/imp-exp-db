@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="../../static/styles.css">
+</head>
+<body>
+    <div tyle="width: 100%;">
+        <img id="main_img" src="/media/img/loading.gif" style="width: 600px;">
+    </div>
+    <div id="log" tyle="width: 100%;">
+        <nav>
+            <ul id="list_loger">
+            </ul>
+        </nav>
+    </div>
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    var myIntervale = null;
+    var start = 0;
+    var value = "";
+    var main_img = document.getElementById('main_img')
+    $.get('/logs/get-from/'+start,function(response){
+        start=response.id;
+    });
+    var bd = document.URL.split("/").at(-1);
+    $.get('/export/'+bd, function(response){
+        console.log(response);
+    });
+    function stopInterval(){
+        if (value=='Fin'){
+            clearInterval(myIntervale);
+            main_img.src='/media/img/done.png'
+            console.log("stop");
+
+        }else{
+            console.log('wait')
+        }
+    }
+    // $(document).ready(function(){
+        
+    //     var loger = document.getElementById('list_loger')
+    //     myIntervale = setInterval(function(){
+            
+    //         $.ajax({
+    //             type:'GET',
+    //             url:'/logs/get-from/'+start,
+    //             success: function(response){
+    //                 console.log(response)
+    //                 start=response.id;
+    //                 var li = document.createElement('li');
+    //                 li.innerHTML = '>&nbsp;&nbsp;' + response.content;
+    //                 loger.appendChild(li);
+    //                 start += 1;
+    //                 value=response['content']
+    //             },
+    //             error: function(response){
+    //                 stopInterval();
+    //             },
+    //         });
+    //     }, 500);
+
+        
+    // })
+</script>
+</html>

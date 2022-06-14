@@ -1,0 +1,22 @@
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+nav ul {
+  height: 550px;
+  width: 70%;
+}
+
+nav ul {
+  list-style-type: none;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+nav ul {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
